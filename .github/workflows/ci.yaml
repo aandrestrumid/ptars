@@ -31,7 +31,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python }}
 
@@ -52,7 +52,7 @@ jobs:
       run: make coverage
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./lcov.info,./coverage.xml
@@ -68,6 +68,6 @@ jobs:
 
     steps:
       - name: check test jobs
-        uses: re-actors/alls-green@v1.2.2
+        uses: re-actors/alls-green@release/v1
         with:
           jobs: ${{ toJSON(needs) }}
